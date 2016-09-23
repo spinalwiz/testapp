@@ -1,37 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { DataService } from './services/data.service';
 
-const routing = RouterModule.forRoot([
-    { path: '',      component: HomeComponent },
-    { path: 'about', component: AboutComponent }
-]);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    routing
+    HttpModule
   ],
-  providers: [
-    DataService
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [],
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }
