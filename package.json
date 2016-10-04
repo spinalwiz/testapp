@@ -2,7 +2,7 @@
   "name": "angular2-full-stack",
   "version": "3.0.0",
   "engines": {
-    "node": "6.6.0"
+    "node": "6.5.0"
   },
   "license": "MIT",
   "author": "gitDavide Violante",
