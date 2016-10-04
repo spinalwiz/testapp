@@ -4,6 +4,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
+    "listFiles": true,
     "mapRoot": "./",
     "module": "es6",
     "moduleResolution": "node",
@@ -11,7 +12,11 @@
     "sourceMap": true,
     "target": "es5",
     "typeRoots": [
-      "../node_modules/@types"
+    "../node_modules/@types"
     ]
-  }
+  },
+
+  "files": [
+    "../typings/index.d.ts"
+  ]
 }

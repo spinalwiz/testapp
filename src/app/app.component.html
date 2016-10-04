@@ -1,3 +1,12 @@
-<h1>
-  {{title}}
-</h1>
+<nav class="navbar navbar-dark bg-inverse">
+    <a class="navbar-brand" href="#">Aim Train</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item"><a class="nav-link" routerLink="/addscore">Add Score</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/leaderboard">Leaderboard</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/gamemodes">Game Modes</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/game">Play</a></li>
+        <li class="nav-item"><auth></auth></li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
