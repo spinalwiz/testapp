@@ -1,7 +1,8 @@
 {
   "name": "angular2-full-stack",
   "dependencies": {
-    "mongoose": "registry:npm/mongoose#4.3.5+20160628072220"
+    "mongoose": "registry:npm/mongoose#4.3.5+20160628072220",
+    "serve-static": "registry:npm/serve-static#1.11.1+20160810053450"
   },
   "globalDependencies": {
     "express": "registry:dt/express#4.0.0+20160708185218",
