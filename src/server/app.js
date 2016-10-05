@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors')
 var path = require('path');
 var morgan = require('morgan'); // logger
 var bodyParser = require('body-parser');
@@ -13,6 +14,7 @@ app.use('/', express.static(__dirname + '/../public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors());
 
 var jwtCheck = jwt({
     secret: new Buffer('pYpMG0ZBFYLu6ioF6dXQS6BqOlqplfaAPn1NIV4WeIApsJ3vDnvyl9pnetZnfOrP', 'base64'),
