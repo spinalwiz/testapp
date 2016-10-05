@@ -40,7 +40,6 @@ export class LeaderboardComponent implements OnInit {
             () => {
                 console.log(this.message);
                 this.isLoading = false;
-                console.log(this.isLoading);
             }
         );
 

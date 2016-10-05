@@ -27,9 +27,9 @@ var mongoose = require('./connection');
 var Highscore = require('./highscores.model.ts');
 var Gamemode = require('./gamemodes.model.ts');
 
-app.get('/api/secured/ping', function (req, res) {
-    res.status(200).json({"test":"test"});
-});
+  app.get('/api/secured/ping', function (req, res) {
+      res.status(200).json({"test":"Authorised"});
+  });
 
 // APIs
 //Gamemodes

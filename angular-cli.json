@@ -20,8 +20,6 @@
         "public/bootstrap.min.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/tether/dist/js/tether.min.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
