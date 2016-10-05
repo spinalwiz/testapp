@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HighscoresService {
-    API_URL: string = 'http://localhost:3000';
+    API_URL: string = 'https://aimtrain.herokuapp.com';
 
     private headers = new Headers({'Content-Type': 'application/json', 'charset': 'UTF-8'});
     private options = new RequestOptions({headers: this.headers});
