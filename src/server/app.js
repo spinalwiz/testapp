@@ -29,9 +29,9 @@ var mongoose = require('./connection');
 var Highscore = require('./highscores.model.ts');
 var Gamemode = require('./gamemodes.model.ts');
 
-  app.get('/api/secured/ping', function (req, res) {
-      res.status(200).json({"test":"Authorised"});
-  });
+app.get('/api/secured/ping', function (req, res) {
+  res.status(200).json({"test": "Authorised"});
+});
 
 // APIs
 //Gamemodes
@@ -73,13 +73,14 @@ app.get('/api/highscores/count', function (req, res) {
 });
 
 // create
-app.get('/api/highscore/add', function (req, res) {
+app.post('/api/secured/highscore/add', function (req, res) {
     var newScore = new Highscore({
-        "user": "121",
-        "userName": "Hotzy Mcgee",
-        "score": 49,
-        "date": "8th July"
+        "user": "",
+        "userName": req.body.userName,
+        "score": req.body.score,
+        "date": ""
     });
+  console.log(req);
     newScore.save(function (err, obj) {
         if (err) return console.error(err);
         res.status(200).json(obj);

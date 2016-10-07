@@ -23,4 +23,14 @@ export class HighscoresService {
     return this.authHttp.get(`${this.API_URL}/api/secured/ping`).map(res => res.json());
   }
 
+  addScore(userName: String, score: Number) {
+    let body = JSON.stringify({ "userName": userName, "score": score });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.authHttp.post(`${this.API_URL}/api/secured/highscore/add`, body, options).map(res => res.json());
+  }
+
+
+
 }
