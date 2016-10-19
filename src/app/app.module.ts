@@ -18,6 +18,8 @@ import {AuthGuard} from "./services/auth.guard";
 import { GameCanvasComponent } from './gamecanvas/gamecanvas.component';
 import {GameModesService} from './services/gamemodes.service';
 import { GameModesComponent } from './gamemodes/gamemodes.component';
+import { AlertComponent } from './alert/alert.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 
 
@@ -30,7 +32,9 @@ import { GameModesComponent } from './gamemodes/gamemodes.component';
         UserProfileComponent,
         AdminComponent,
         GameCanvasComponent,
-        GameModesComponent
+        GameModesComponent,
+        AlertComponent,
+        SafePipe
     ],
     imports: [
         BrowserModule,

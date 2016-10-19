@@ -1,24 +1,24 @@
 <h3>Leaderboard</h3>
 <p>Auth Test: {{message?.test}}</p>
 <table class="table">
-    <thead>
-    <tr>
-        <th>Player</th>
-        <th>Score</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let highscore of highscores">
-        <td>{{highscore.userName}}</td>
-        <td>{{highscore.score}}</td>
-        <td>
-            <button type="button" class="close" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </td>
-    </tr>
-    </tbody>
+  <thead>
+  <tr>
+    <th>Player</th>
+    <th>Score</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let highscore of highscores">
+    <td>{{highscore.userName}}</td>
+    <td>{{highscore.score}}</td>
+    <td>
+      <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </td>
+  </tr>
+  </tbody>
 </table>
 
 <button (click)="addScore()">Add new score</button>

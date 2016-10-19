@@ -9,7 +9,8 @@
   "description": "Angular 2 full stack project.",
   "angular-cli": {},
   "scripts": {
-    "start": "node ./src/server/app.js",
+    "start": "nodemon ./src/server/app.js",
+    "startBAK": "ng serve -port 3000 --proxy-config proxy.conf.json",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",

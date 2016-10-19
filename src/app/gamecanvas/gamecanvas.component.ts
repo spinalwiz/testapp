@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {AuthService} from "../services/auth.service";
+import {ActivatedRoute, Params} from "@angular/router";
+import {and} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'gamecanvas',
@@ -7,24 +9,40 @@ import {AuthService} from "../services/auth.service";
   styleUrls: ['./gamecanvas.component.css']
 })
 export class GameCanvasComponent implements OnInit {
-  @ViewChild('gamewindow') iframe:ElementRef;
+  mode: String;
+  level: String;
+  gameUrl: String = "https://playcanv.as/p/ubmYsFJ9/";
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     if (!this.authService.authenticated()) {
       this.authService.login();
     } else {
-      this.sendAuthToken();
+      // this.sendAuthToken();
     }
+
+    this.route.params.forEach((params: Params) => {
+      this.mode = params['mode'];
+      this.level = params['level'];
+    });
+
+    this.gameUrl += this.generateParamString();
   }
 
-  sendAuthToken() {
-    // var win = document.getElementById("gamewindow").nativeElement.contentWindow;
-    let win = this.iframe.nativeElement.contentWindow;
-    win.postMessage(localStorage.getItem('id_token'));
-    //, "http://a.JavaScript.info" target domain
+
+  generateParamString() {
+    if (this.mode && this.level) {
+      return `?m=${this.mode}&l=${this.level}`;
+    }
+    else if (this.mode) {
+      return `?m=${this.mode}`;
+    }
+    else if (this.level) {
+      `?m=${this.level}`;
+    }
   }
 
 }

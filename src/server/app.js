@@ -1,5 +1,5 @@
 var express = require('express');
-var cors = require('cors')
+var cors = require('cors');
 var path = require('path');
 var morgan = require('morgan'); // logger
 var bodyParser = require('body-parser');
@@ -28,6 +28,9 @@ app.use(morgan('dev'));
 var mongoose = require('./connection');
 var Highscore = require('./highscores.model.ts');
 var Gamemode = require('./gamemodes.model.ts');
+var User = require('./users.model.ts');
+var BulletData = require('./bulletdata.model.ts');
+var GameData = require('./gamedata.model.ts');
 
 app.get('/api/secured/ping', function (req, res) {
   res.status(200).json({"test": "Authorised"});
@@ -52,10 +55,59 @@ app.get('/api/highscores', function (req, res) {
     });
 });
 
+//GameData
+app.get('/api/gamedata', function (req, res) {
+  GameData.find({}, function (err, docs) {
+    if (err) return console.error(err);
+    res.json(docs);
+  });
+});
+
+//BulletData
+app.get('/api/bulletdata', function (req, res) {
+  console.log("bulletdata");
+  BulletData.find({}, function (err, docs) {
+    if (err) return console.error(err);
+    res.json(docs);
+  });
+});
+
+// create
+app.post('/api/bulletdata/add', function (req, res) {
+  console.log(req.body);
+  var newBullet = new BulletData(req.body);
+  newBullet.save(function (err, obj) {
+    if (err) return console.error(err);
+    res.status(200).json(obj);
+  });
+});
+
+//User by userid
+app.get('/api/username/:userid', function (req, res) {
+  var u = req.params['userid'];
+  var q = User.findOne({_id: u}).lean();
+  q.exec(function (err, docs) {
+    if (err) return console.error(err);
+    console.log(`user: ${docs[0].userName} email: ${docs[0].resendEmail()}`);
+    res.json(docs[0]);
+  });
+});
+
+//User by username
+app.get('/api/userid/:username', function (req, res) {
+  var u = req.params['userName'];
+  var q = User.findOne({_id: u}).lean();
+  q.exec(function (err, docs) {
+    if (err) return console.error(err);
+    console.log(`user: ${docs[0].userName} email: ${docs[0].email}`);
+    res.json(docs[0]);
+  });
+});
+
 // find Highscore by username
 app.get('/api/highscores/username/:username', function (req, res) {
     var u = req.params['username'];
-    var q = Highscore.find({userName: u}).sort({'score': -1}).limit(1)
+    var q = Highscore.find({userName: u}).lean().sort({'score': -1}).limit(1);
     q.exec(function (err, docs) {
         if (err) return console.error(err);
         // console.log(docs);
@@ -73,7 +125,7 @@ app.get('/api/highscores/count', function (req, res) {
 });
 
 // create
-app.post('/api/secured/highscore/add', function (req, res) {
+app.post('/api/highscore/add', function (req, res) {
     var newScore = new Highscore({
         "user": "",
         "userName": req.body.userName,
